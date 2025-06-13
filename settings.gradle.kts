@@ -22,4 +22,7 @@ dependencyResolutionManagement {
 rootProject.name = "Playground"
 
 include(":app")
-include(":core:base-testing")
+include(
+    ":core:api",
+    ":core:base-testing",
+)
