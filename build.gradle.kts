@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.detekt) apply true // Needs to be applied at the root, unlike the other plugins.
+    alias(libs.plugins.room) apply false
 }
 
 subprojects {

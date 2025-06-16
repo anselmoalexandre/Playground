@@ -2,10 +2,11 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 android {
-    namespace = "com.anselmoalexandre.data"
+    namespace = "com.anselmoalexandre.storage"
 
     compileSdk = libs.versions.compileSdk.get().toInt()
 
@@ -21,13 +22,20 @@ android {
     kotlinOptions {
         jvmTarget = "19"
     }
+
+    sourceSets {
+        // Adds exported schema location as test app assets.
+        getByName("androidTest").assets.srcDir("$projectDir/schemas")
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(project(path = ":core:api"))
-    implementation(project(path = ":core:storage"))
-    testImplementation(project(path = ":core:base-testing"))
+    implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)

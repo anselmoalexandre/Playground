@@ -8,3 +8,10 @@ data class RemoteNewsArticle(
     val title: String,
     val author: String,
 )
+
+@Keep
+data class RemoteNewsAuthor(
+    val id: Int,
+    val name: String,
+    val date: String,
+)

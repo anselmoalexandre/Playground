@@ -7,6 +7,8 @@ plugins {
 android {
     namespace = "com.anselmoalexandre.api"
 
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_19
         targetCompatibility = JavaVersion.VERSION_19
@@ -18,7 +20,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+
     implementation(libs.bundles.retrofit)
+
     implementation(libs.bundles.moshi)
     ksp(libs.moshi.codegen)
 

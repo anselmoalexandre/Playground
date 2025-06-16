@@ -26,4 +26,5 @@ include(
     ":core:api",
     ":core:base-testing",
     ":core:data",
+    ":core:storage",
 )

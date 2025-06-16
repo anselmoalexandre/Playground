@@ -6,6 +6,8 @@ plugins {
 android {
     namespace = "com.anselmoalexandre.testing"
 
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_19
         targetCompatibility = JavaVersion.VERSION_19

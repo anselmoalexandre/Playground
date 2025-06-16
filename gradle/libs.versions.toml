@@ -97,15 +97,15 @@ hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 [bundles]
-hilt = ["hilt", "hilt-compiler"]
 detekt = ["detekt-api", "detekt-test"]
 coil = ["coil", "coil-svg", "coil-compose"]
 moshi = ["moshi", "moshi-adapters", "moshi-codegen"]
-room = ["room-ktx", "room-runtime", "room-compiler", "room-testing"]
+room = ["room-ktx", "room-runtime", "room-testing"]
 retrofit = ["retrofit", "retrofit-moshi-converter", "logging-interceptor"]
 unit-test = ["junit", "truth", "mockk-android", "mockk-agent", "kotlin-coroutines-test", "androidx-junit"]
 
 [plugins]
+room = { id = "androidx.room", version.ref = "room" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
