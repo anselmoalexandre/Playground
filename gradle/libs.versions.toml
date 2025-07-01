@@ -32,6 +32,7 @@ timber = "5.0.1"
 detekt-gradle-plugin = "1.23.8"
 cashapp-turbine = "1.2.1"
 hilt = "2.56.2"
+datastore = "1.1.1"
 
 [libraries]
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
@@ -96,6 +97,10 @@ detekt-test = { module = "io.gitlab.arturbosch.detekt:detekt-test", version.ref 
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
+androidx-preference-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+
 [bundles]
 detekt = ["detekt-api", "detekt-test"]
 coil = ["coil", "coil-svg", "coil-compose"]
@@ -103,6 +108,7 @@ moshi = ["moshi", "moshi-adapters", "moshi-codegen"]
 room = ["room-ktx", "room-runtime", "room-testing"]
 retrofit = ["retrofit", "retrofit-moshi-converter", "logging-interceptor"]
 unit-test = ["junit", "truth", "mockk-android", "mockk-agent", "kotlin-coroutines-test", "androidx-junit"]
+datastore = ["androidx-datastore", "androidx-datastore-core", "androidx-preference-datastore"]
 
 [plugins]
 room = { id = "androidx.room", version.ref = "room" }
