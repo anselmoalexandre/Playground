@@ -5,19 +5,23 @@ import androidx.lifecycle.viewModelScope
 import com.anselmoalexandre.data.NewsArticle
 import com.anselmoalexandre.data.NewsAuthor
 import com.anselmoalexandre.playground.articles.domain.NewsArticlesUseCase
+import com.anselmoalexandre.playground.authors.domain.AuthorUseCase
 import com.anselmoalexandre.playground.authors.domain.NewsAuthorUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class NewsAuthorsViewModel @Inject constructor(
     private val newsArticlesUseCase: NewsArticlesUseCase,
     private val newsAuthorUseCase: NewsAuthorUseCase,
+    private val authorUseCase: AuthorUseCase,
 ) : ViewModel() {
 
     val uiState: StateFlow<UiState> = combine(
@@ -38,6 +42,12 @@ class NewsAuthorsViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = UiState()
         )
+
+    fun saveAuthor(author: NewsAuthor) {
+        viewModelScope.launch(context = Dispatchers.IO) {
+            authorUseCase.invoke(author)
+        }
+    }
 
     data class UiState(
         val loading: Boolean = false,
