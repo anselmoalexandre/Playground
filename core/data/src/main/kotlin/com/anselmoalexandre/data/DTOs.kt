@@ -43,3 +43,9 @@ internal fun NewsAuthorEntity.asNewsAuthor() = NewsAuthor(
     name = this.name,
     date = this.date,
 )
+
+internal fun NewsAuthor.asNewsAuthorEntity() = NewsAuthorEntity(
+    id = this.id,
+    name = this.name,
+    date = this.date,
+)
